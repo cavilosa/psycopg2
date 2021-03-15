@@ -15,7 +15,12 @@ cursor.execute('''
     );
 ''')
 
-cursor.execute('insert into table4 values (1, false), (2, true);')
+cursor.execute('insert into table4 values (1, false), (%s, %s);', (2, True))
+
+cursor.execute('insert into table4 values' +
+               '(%(id)s, %(completed)s);', {
+               "id": 3,
+               "completed": False})
 
 conn.commit()
 conn.close()
