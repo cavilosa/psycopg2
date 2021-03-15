@@ -29,6 +29,7 @@ cursor.execute(SQL, data)
 
 cursor.execute('Select * from table4;')
 lines = cursor.fetchall()
+
 for line in lines:
     print (line)
 
