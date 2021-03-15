@@ -17,10 +17,15 @@ cursor.execute('''
 
 cursor.execute('insert into table4 values (1, false), (%s, %s);', (2, True))
 
-cursor.execute('insert into table4 values' +
-               '(%(id)s, %(completed)s);', {
-               "id": 3,
-               "completed": False})
+#tamplate with sql
+SQL = 'insert into table4 values' +
+               '(%(id)s, %(completed)s);'
+
+data = {
+"id": 3,
+"completed": False}
+
+cursor.execute(SQL,data )
 
 conn.commit()
 conn.close()
