@@ -27,6 +27,14 @@ data = {
 
 cursor.execute(SQL, data)
 
+cursor.execute('Select * from table4;')
+
+result = cursor.fetchmany(2)
+print("fetch 2", result)
+#cursor.execute('Select * from table4;')
+result2 = cursor.fetchone()
+print("fetchone", result2)
+
 conn.commit()
 conn.close()
 cursor.close()
