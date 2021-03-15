@@ -28,12 +28,18 @@ data = {
 cursor.execute(SQL, data)
 
 cursor.execute('Select * from table4;')
+lines = cursor.fetchall()
+for line in lines:
+    print (line)
 
-result = cursor.fetchmany(2)
-print("fetch 2", result)
-#cursor.execute('Select * from table4;')
-result2 = cursor.fetchone()
-print("fetchone", result2)
+cursor.execute('Select * from table4;')
+lines = cursor.fetchone()
+cursor.execute('insert into table4 values (%s, %s);', (lines[0]+3, lines[1]))
+cursor.execute('Select * from table4;')
+results = cursor.fetchall()
+print("results fetchall", results)
+
+
 
 conn.commit()
 conn.close()
